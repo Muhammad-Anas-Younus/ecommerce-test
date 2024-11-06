@@ -15,10 +15,14 @@ export interface IProduct {
   title: string;
 }
 
-const useGetProducts = () => {
+const useGetProducts = (category?: string) => {
+  let url = "/products";
+  if (category !== "") {
+    url += `/category/${category}`;
+  }
   const data = useQuery({
-    queryKey: [queryKeys.products],
-    queryFn: async () => (await apiClient.get("/products")).data as IProduct[],
+    queryKey: [queryKeys.products, category],
+    queryFn: async () => (await apiClient.get(url)).data as IProduct[],
   });
   return data;
 };

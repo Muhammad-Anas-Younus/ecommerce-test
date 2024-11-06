@@ -6,6 +6,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import queryClient from "../api/react-query";
 import Header from "../components/header";
 import store, { persistor } from "../store";
+import { NuqsAdapter } from "nuqs/adapters/react";
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -14,8 +15,10 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
         <PersistGate persistor={persistor}>
           <QueryClientProvider client={queryClient}>
             <NextUIProvider>
-              <Header />
-              {children}
+              <NuqsAdapter>
+                <Header />
+                {children}
+              </NuqsAdapter>
             </NextUIProvider>
           </QueryClientProvider>
         </PersistGate>

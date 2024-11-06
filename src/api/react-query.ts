@@ -4,6 +4,7 @@ const queryClient = new QueryClient();
 
 export const queryKeys = {
   products: "products",
+  productCategories: "product-categories",
 };
 
 export default queryClient;

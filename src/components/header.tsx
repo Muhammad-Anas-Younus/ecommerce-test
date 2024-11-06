@@ -3,9 +3,12 @@ import { Search, ShoppingCart } from "lucide-react";
 import { useQueryState } from "nuqs";
 import { ChangeEvent } from "react";
 import { useDebouncedCallback } from "use-debounce";
+import useAppSelector from "../hooks/useAppSelector";
 
 const Header = () => {
   const [search, setSearch] = useQueryState("search");
+
+  const cart = useAppSelector((state) => state.cart);
 
   const handleSearch = useDebouncedCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +30,7 @@ const Header = () => {
           endContent={<Search />}
         />
         <Button variant="light">
-          <ShoppingCart />
+          <ShoppingCart /> {cart.products.length > 0 && cart.products.length}
         </Button>
       </div>
     </div>

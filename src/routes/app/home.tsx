@@ -6,8 +6,10 @@ import ProductCard from "../../components/product-card";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useQueryState("category");
+  const [search] = useQueryState("search");
   const { data: products, isFetching: isProductsLoading } = useGetProducts(
-    selectedCategory || ""
+    selectedCategory || "",
+    search || ""
   );
   const { data: categories, isFetching: isCategoriesLoading } =
     useGetProductCategories();
@@ -26,7 +28,7 @@ const Home = () => {
               <Select
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 label="Categories"
-                className="w-32"
+                className="w-40"
                 defaultSelectedKeys={[selectedCategory || ""]}
               >
                 {categories?.map((category) => (
@@ -36,10 +38,13 @@ const Home = () => {
             </div>
           )}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 ">
-            {products &&
+            {products && products.length > 0 ? (
               products?.map((product) => (
                 <ProductCard product={product} key={product.id} />
-              ))}
+              ))
+            ) : (
+              <p>No Products Found</p>
+            )}
           </div>
         </>
       )}

@@ -38,11 +38,9 @@ export const Checkout = () => {
     },
   });
 
-  console.log(formState.values);
-
   return (
-    <div className="flex gap-10 container py-4">
-      <div className="w-[60%] space-y-4">
+    <div className="flex lg:flex-row flex-col-reverse gap-10 container py-4">
+      <div className="w-full lg:w-[60%] space-y-4">
         <h1 className="text-lg font-medium">Contact information</h1>
         <div className="grid gap-4 grid-cols-2">
           <Input
@@ -129,7 +127,7 @@ export const Checkout = () => {
           Confirm Order
         </Button>
       </div>
-      <div className="w-[40%] space-y-4">
+      <div className="w-full lg:w-[40%] space-y-4">
         <h1 className="text-lg font-medium">Order Summary</h1>
         <div className="bg-gray-100 overflow-auto p-4 rounded">
           <Cart productContainerClassName="max-h-96" variant="checkout" />

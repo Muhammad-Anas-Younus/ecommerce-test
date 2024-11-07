@@ -38,6 +38,8 @@ export const Checkout = () => {
     },
   });
 
+  console.log(formState.values);
+
   return (
     <div className="flex gap-10 container py-4">
       <div className="w-[60%] space-y-4">

@@ -7,6 +7,7 @@ const useGetProductCategories = () => {
     queryKey: [queryKeys.productCategories],
     queryFn: async () =>
       (await apiClient.get("/products/categories")).data as string[],
+    refetchOnWindowFocus: false,
   });
   return data;
 };

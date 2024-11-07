@@ -1,10 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./app/home";
+import { Checkout } from "./app/checkout";
 
 const routes = [
   {
     path: "/",
     component: Home,
+  },
+  {
+    path: "/checkout",
+    component: Checkout,
   },
 ];
 

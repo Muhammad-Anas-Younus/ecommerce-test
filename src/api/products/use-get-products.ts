@@ -35,6 +35,7 @@ const useGetProducts = (category?: string, search?: string) => {
 
       return products;
     },
+    refetchOnWindowFocus: false,
   });
   return data;
 };

@@ -7,6 +7,7 @@ import queryClient from "../api/react-query";
 import Header from "../components/header";
 import store, { persistor } from "../store";
 import { NuqsAdapter } from "nuqs/adapters/react";
+import { Toaster } from "react-hot-toast";
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -18,6 +19,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
               <NuqsAdapter>
                 <Header />
                 {children}
+                <Toaster />
               </NuqsAdapter>
             </NextUIProvider>
           </QueryClientProvider>
